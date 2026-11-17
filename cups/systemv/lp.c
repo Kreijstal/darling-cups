@@ -586,15 +586,9 @@ main(int  argc,				/* I - Number of command-line arguments */
   if (printer == NULL)
   {
     if (!cupsGetNamedDest(NULL, NULL, NULL) && cupsLastError() == IPP_STATUS_ERROR_NOT_FOUND)
-    {
-      _cupsLangPrintf(stderr, _("%s: Error - %s\n"), argv[0], cupsLastErrorString());
-      _cupsLangPrintf(stderr, _("%s: Hint - to enable printing from Darling, ensure a printer (or cups-pdf) is configured on the host system.\n"), argv[0]);
-    }
+      _cupsLangPrintf(stderr, _("%s: Error - %s"), argv[0], cupsLastErrorString());
     else
-    {
-      _cupsLangPrintf(stderr, _("%s: Error - scheduler not responding.\n"), argv[0]);
-      _cupsLangPrintf(stderr, _("%s: Hint - ensure the CUPS printing service is running on the host system.\n"), argv[0]);
-    }
+      _cupsLangPrintf(stderr, _("%s: Error - scheduler not responding."), argv[0]);
 
     return (1);
   }
